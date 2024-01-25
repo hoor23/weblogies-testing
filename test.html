@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cards Slider</title>
+    <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+<script src="https://kit.fontawesome.com/ad923a8f9e.js" crossorigin="anonymous"></script>
+    <!-- CSS -->
+    <style>
+      /* Poppins Font*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #efefef;
+}
+.container {
+  max-width: 1120px;
+  width: 100%;
+  padding: 40px 0;
+}
+.content {
+  margin: 0 40px;
+  overflow: hidden;
+  padding-inline: 5px;
+}
+
+.cards-wrapper {
+  display: flex;
+}
+
+
+.review_list {
+  padding: 0;
+  text-align: center;
+}
+
+.review-item__content {
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.6;
+  letter-spacing: normal;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  background: #fff;
+  text-align: left;
+  border-radius: 5px;
+  box-shadow: 4px 2px 31px 0 #eb4f4ca1;
+  color: #333;
+  padding: 35px 30px;
+  height: 220px;
+  margin: 0 10px 15px;
+  position: relative;
+}
+
+.review-item__content::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin: 0 22px 0;
+  border: 0.5rem solid transparent;
+  border-top-width: 0.5rem;
+  border-top-color: #fff;
+  width: 0;
+  height: 0;
+}
+
+#review-content_container {
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+
+
+}
+
+.star {
+  height: 30px;
+}
+
+.star i {
+  color: #FF9800;
+}
+
+/* width */
+#review-content_container::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+#review-content_container::-webkit-scrollbar-track {
+  background: #e3e3e3;
+  border-radius: 10px;
+}
+
+/* Handle */
+#review-content_container::-webkit-scrollbar-thumb {
+  background: rgb(182, 186, 197);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+#review-content_container::-webkit-scrollbar-thumb:hover {
+  background: rgb(246, 139, 35);
+}
+
+.review__item__badge {
+  position: relative;
+  display: -ms-inline-flexbox;
+  display: block;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  color: #000;
+  margin: auto;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  border-radius: 50%;
+  max-height: 80px;
+  width: 100%;
+}
+
+.review__item__badge--text {
+  -ms-flex: 1;
+  flex: 1;
+  border-radius: 0.5rem;
+  display: -ms-flexbox;
+  display: block;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  text-align: left;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 5px 5px 5px 10px;
+  line-height: 1.3333333333;
+}
+
+.initial {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  background-image: linear-gradient(270deg, #FFC107, #FF9800);
+  color: #fff;
+  border-radius: 100%;
+  text-align: center;
+  padding: 0;
+  vertical-align: top;
+  margin-right: 10px;
+}
+
+.review__item__badge--name {
+  font-weight: 600;
+  display: inline-block;
+  width: auto;
+}
+
+.review__item__badge--name span {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* Swiper Navigation Styles */
+.swiper-navBtn::before,
+.swiper-navBtn::after {
+  font-size: 55px;
+}
+.swiper-button-prev {
+left: 11rem;
+color: #fad3d2;
+}
+.swiper-button-prev::after,
+.swiper-button-next::after{
+  font-size: 3rem;
+  font-weight: bolder;
+}
+.swiper-button-next {
+right: 11rem;
+color: #fad3d2;
+
+}
+
+/* Remove navigation button on smaller screens*/
+@media screen and (max-width: 800px) {
+  .content {
+    margin: 0 10px;
+  }
+  .swiper-navBtn {
+    display: none;
+  }
+}  
+
+@media screen and (min-width: 576px) {
+  .review__item__content {
+    font-size: 14px;
+  }
+}
+
+@media screen and  (min-width: 768px) {
+  .review__item__badge--text {
+    padding: 1rem 1rem;
+  }
+}
+
+@media screen and (min-width: 1367px) {
+  .review__item__badge--name {
+    color: #fff;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .review__item__badge--name {
+    font-size: 1.25rem;
+  }
+}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <div class=" swiper-wrapper cards-wrapper">
+          <div class="swiper-slide ">
+        
+            <div class="review_list">
+              <div class="review-item__content ">
+
+                <div id="review-content_container" class="scrollbar_y">
+                  <div class="star">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                  </div>
+                  <p>Awesome work very fast and reliable. These guys do everything to help you grow your business.
+                    Adam is very helpful and i would recomend these guys to everyone.</p>
+
+                </div>
+              </div>
+              <div class="review__item__badge">
+                <div class="eview__item__badge--text">
+                  <span class="initial">
+                    <h3 style="margin: 11px 0 0 0;">BS</h3>
+                  </span>
+                  <div class="review__item__badge--name" >Benjamin Skinner <span>Brand
+                      Owner</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide ">
+            <div class="review_list">
+              <div class="review-item__content ">
+
+                <div id="review-content_container" class="scrollbar_y">
+                  <div class="star">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                  </div>
+                  <p>It was a great service and with the help from my representative Ilana she was a great help. Would
+                    recommend this service.</p>
+
+                </div>
+              </div>
+              <div class="review__item__badge">
+                <div class="eview__item__badge--text">
+                  <span class="initial">
+                    <h3 style="margin: 11px 0 0 0;">JR</h3>
+                  </span>
+                  <div class="review__item__badge--name" >Jr Reyes <span>Brand
+                      Owner</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide ">
+           
+            <div class="review_list">
+              <div class="review-item__content ">
+
+                <div id="review-content_container" class="scrollbar_y">
+                  <div class="star">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                  </div>
+                  <p>Superb service! Having done a few sites with other designers, Weblogies is BY FAR the best I have
+                    ever worked with. Our assigned rep was Adam Fisher, who was both patient and helpful in the
+                    extreme. I cannot recommend Weblogies highly enough. I will definitely be using them again.</p>
+
+                </div>
+              </div>
+              <div class="review__item__badge">
+                <div class="eview__item__badge--text">
+                  <span class="initial">
+                    <h3 style="margin: 11px 0 0 0;">LB</h3>
+                  </span>
+                  <div class="review__item__badge--name">lulubelle1239 <span>Brand
+                      Owner</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide ">
+        
+            <div class="review_list">
+              <div class="review-item__content ">
+
+                <div id="review-content_container" class="scrollbar_y">
+                  <div class="star">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                  </div>
+                  <p>They were a fantastic company to work with. Everything was done in a timely manner</p>
+
+                </div>
+              </div>
+              <div class="review__item__badge">
+                <div class="eview__item__badge--text">
+                  <span class="initial">
+                    <h3 style="margin: 11px 0 0 0;">KW</h3>
+                  </span>
+                  <div class="review__item__badge--name" >Kolleen Wall <span>Brand
+                      Owner</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide ">
+            <!-- <h2>02</h2>
+            <h3>Delicious Recipes</h3>
+            <p>
+              Find inspiration in the kitchen with our collection of
+              mouth-watering recipes. From quick and easy meals to gourmet
+              dishes, there's something for everyone.
+            </p>
+            <a href="">Read More</a> -->
+         <div class="review_list">
+                <div class="review-item__content ">
+
+                  <div id="review-content_container" class="scrollbar_y">
+                    <div class="star">
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                    </div>
+                    <p>My experience with weblogies had a little hiccup in the process, but Adam Fisher came through and
+                      completed the project.</p>
+
+                  </div>
+                </div>
+                <div class="review__item__badge">
+                  <div class="eview__item__badge--text">
+                    <span class="initial">
+                      <h3 style="margin: 11px 0 0 0;">TB</h3>
+                    </span>
+                    <div class="review__item__badge--name">Tammy Bing <span>Brand
+                        Owner</span></div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <!-- ------------------- -->
+        
+        </div>
+        <div class="swiper-button-next swiper-navBtn"></div>
+        <div class="swiper-button-prev swiper-navBtn"></div>
+      </div>
+      <a href="asset/3rd.mp4">
+        <img src="asset/ecomm-services-development.png" alt="">
+      </a>
+   
+    </div>
+<!-- Swiper Javascript -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <!-- JavaScript -->
+  
+    <script>
+      var swiper = new Swiper(".content", {
+    slidesPerView: 3,
+    spaceBetween: 15,
+    grabCursor: "true",
+    navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  loop:true,
+  breakpoints:{
+0:{
+  slidesPerView:1,
+},
+770:{
+  slidesPerView:2,
+},
+1024:{
+  slidesPerView:3,
+},
+
+  },
+  });
+    </script>
+  </body>
+</html>

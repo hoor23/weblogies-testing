@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 3000 750" style="enable-background:new 0 0 3000 750;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);}
+	.st1{filter:url(#Adobe_OpacityMaskFilter);}
+	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+	.st3{opacity:0.2;mask:url(#c_4_);fill:#E51340;}
+	.st4{filter:url(#Adobe_OpacityMaskFilter_1_);}
+	.st5{mask:url(#c_3_);fill:url(#SVGID_2_);}
+</style>
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="1251.4166" y1="524.8" x2="1250.6279" y2="524.8" gradientTransform="matrix(-3000 0 0 -750 3754250 393975)">
+	<stop  offset="0" style="stop-color:#CC312E"/>
+	<stop  offset="1" style="stop-color:#EF5350"/>
+</linearGradient>
+<path class="st0" d="M3000,0H0v750h3000V0z"/>
+<defs>
+	<filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="1080.5" y="0" width="1920.8" height="750">
+		<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+	</filter>
+</defs>
+<mask maskUnits="userSpaceOnUse" x="1080.5" y="0" width="1920.8" height="750" id="c_4_">
+	<g class="st1">
+		<path id="a_4_" class="st2" d="M0,0h3000v750H0V0z"/>
+	</g>
+</mask>
+<path class="st3" d="M1521,0l-440.5,750h1920.8L3000,0H1521z"/>
+<defs>
+	<filter id="Adobe_OpacityMaskFilter_1_" filterUnits="userSpaceOnUse" x="0" y="0" width="1730" height="750">
+		<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+	</filter>
+</defs>
+<mask maskUnits="userSpaceOnUse" x="0" y="0" width="1730" height="750" id="c_3_">
+	<g class="st4">
+		<path id="a_3_" class="st2" d="M0,0h3000v750H0V0z"/>
+	</g>
+</mask>
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="1250.5953" y1="524.6908" x2="1251.4359" y2="524.7828" gradientTransform="matrix(-1730 0 0 -750 2165480 393975)">
+	<stop  offset="0" style="stop-color:#EF5350"/>
+	<stop  offset="1" style="stop-color:#F16B69"/>
+</linearGradient>
+<path class="st5" d="M0,750V0h450.6L1730,750H0z"/>
+</svg>

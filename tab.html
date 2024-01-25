@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- Include FancyBox CSS file -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+<!-- Include FancyBox JS file -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <style>
+        body {
+            font-family: Poppins, sans-serif;
+        }
+
+        .tabs-container {
+            width: 1300px;
+            margin: 80px auto;
+            padding: 0 1rem;
+        }
+
+        .tabs {
+            margin: 0 68px;
+        }
+
+        .tabcontent p {
+            margin-bottom: 1rem;
+        }
+
+        .tabs ul {
+            display: flex;
+            cursor: pointer;
+        }
+
+        .tabs ul li {
+
+            cursor: pointer;
+            text-align: center;
+            position: relative;
+            border-bottom: 3px solid #edeff3;
+            width: 50%;
+            font-weight: 700;
+            color: #000;
+            transition: all .2s ease-in-out;
+            font-size: 14px;
+            list-style: none;
+            padding: 24px;
+        }
+
+        .tabs ul li.active {
+            color: #e94e4b;
+            border-bottom-color: #e64d4a;
+            font-weight: bold;
+        }
+
+        .tabs ul li:hover {
+            color: #e94e4b;
+            font-weight: bold;
+        }
+
+        .tabs ul li .icon {
+            font-size: 25px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        .content {
+
+            padding: 10px;
+            display: block;
+        }
+
+
+        .tab-description {
+            width: 50%;
+            position: relative;
+        }
+
+        .tab-description ul {}
+
+        .tab-description ul {
+            padding-bottom: 20px;
+            list-style: none;
+        }
+
+        .tab-description ul li {
+
+            display: inline-block;
+            margin: 0 0 3px;
+            font-size: 16px;
+            vertical-align: text-bottom;
+            font-weight: 400;
+            width: 49%;
+        }
+
+        .tab-description ul i {
+            color: #ea4f4c;
+        }
+
+        .tab2content,
+        .tab3content,
+        .tab4content {
+            display: none;
+        }
+
+        .tab1content .active {
+            display: block;
+        }
+
+        .tabs ul li.active::after {
+            display: block;
+            content: "";
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            border-top: 3px solid #ea4f4c;
+            border-left: 3px solid #ea4f4c;
+            transform: translateX(-50%) rotate(45deg);
+            width: 10px;
+            height: 10px;
+            background: #fff;
+        }
+        .ss-portfolio {
+            padding-top: 5.5rem;
+        }
+
+        .porfolio-container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .portfolio-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            color: black;
+        }
+
+        .portfolio-title h2 {
+            font-size: 2.18rem;
+        }
+
+        .port-tab {
+            margin: 0 78px;
+        }
+
+        .porfolio-items-container {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 0 1rem;
+            max-width: 33%;
+            position: relative;
+        }
+
+        .porfolio-items-container img {
+            width: 100%;
+            height: auto;
+            vertical-align: middle;
+        }
+
+        .border-box-effect:before, .border-box-effect:after{
+           
+           
+            width: calc(94% - 30px);
+            height: calc(100% - 30px);
+            z-index: 1;
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 31px;
+            transition: 0.5s;
+            transform: scale(0);
+        }
+        .border-box-effect::before{
+            -webkit-transform-origin: 0 100%;
+            border-bottom: 3px solid #fff;
+            border-left: 3px solid #fff;
+            transform-origin: 0 100%;
+            
+        }
+        .border-box-effect::after{
+            -webkit-transform-origin: 100% 0;
+            transform-origin: 100% 0;
+            border-top: 3px solid #FFF;
+    border-right: 3px solid #FFF;
+           
+        }
+        .border-box-effect:hover::before,.border-box-effect:hover::after {
+            transform: scale(1);
+            -webkit-transform: scale(1);
+        }
+        
+
+
+
+.ss-portfolio__item {
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
+.ss-portfolio__item:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border: 0 solid #fff;
+    transition: all .2s ease-in-out;
+}
+.border-box-effect > *:before {
+    background: rgba(0, 0, 0, 0.2);
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    display: none;
+    -webkit-transition: 0.6s;
+    -moz-transition: 0.6s;
+    -o-transition: 0.6s;
+    transition: 0.6s;
+}
+.border-box-effect > *:after {
+    content: "\f002";
+    font-family: FontAwesome;
+    font-size: 60px;
+    color: #ffffff;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 40px;
+    height: 40px;
+    line-height: 36px;
+    z-index: 3;
+    font-weight: 200;
+   display: none;
+    transition: 0.6s;
+}
+.border-box-effect > *:hover:before, .border-box-effect > *:hover:after{
+    display: block;
+}
+.row {
+            display: -ms-flexbox;
+            display: flex;
+            align-items: center;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            margin-right: -1rem;
+            margin-left: -1rem;
+        }
+
+        /* --------------------------------------------------------- */
+        .main-tbing-sec {
+            padding: 0;
+        }
+
+        .filter-tabs {
+        width: 100%;
+            position: relative;
+            
+        }
+        .filter-tabs ul{
+            width: 100%;
+            padding: 0;
+        }
+
+        .filter-tabs ul li {
+            transition: all 700ms;
+            display: block;
+            padding: 10px;
+            height: 40;
+            cursor: pointer;
+            text-transform: capitalize;
+            font-size: 14px;
+            color: #9a9a9a;
+            font-weight: 600;
+            border: 1px solid #d4d4d4;
+            margin: 5px 3px 5px 3px;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .filter-tabs ul li.current {
+            transform: translateX(-0.625rem);
+            transition: all 700ms;
+            color: #fff;
+            border: 1px solid #fff;
+            background: linear-gradient(270deg, #FFC107, #FF9800);
+        }
+
+        .filter-content {
+            max-width: 100%;
+            position: relative;
+        }
+        @media screen and  (min-width: 992px){
+            .filter-contents{
+                max-width: 75%;
+                flex: 0 0 75%;
+            }
+            .filter-tabs{
+                max-width: 25%;
+                flex: 0 0 25%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tabs-container container">
+        <div class="tabs">
+            <ul>
+                <li class="active" id="tab1">
+
+                    <span class="text"> web design and development </span>
+                </li>
+                <li id="tas2">
+
+                    <span class="text">Video Animation</span>
+                </li>
+                <li id="tab3">
+
+                    <span class="text">Mobile Apps</span>
+                </li>
+                <li id="tab3" >
+
+                    <span class="text"> Logo Design</span>
+                </li>
+
+            </ul>
+
+        </div>
+        <br>
+        <div class="content">
+
+            <div class="tabcontent">
+                <div class="active" style="display: block;">
+                    <div class="row main-tbing-sec" style="align-items: normal; ">
+                        <div class="filter-tabs">
+                            <ul>
+                                <li class="current" id="tab11">
+
+                                    <span class="filter-text">All </span>
+                                </li>
+                                <li id="tab2">
+
+                                    <span class="filter-text">Custom Website</span>
+                                </li>
+                                <li id="tab3" onClick="JavaScript:selectTab(3);">
+
+                                    <span class="filter-text">E-commerce Solution</span>
+                                </li>
+                                <li id="tab3" onClick="JavaScript:selectTab(3);">
+
+                                    <span class="filter-text"> beauty products</span>
+                                </li>
+                                <li id="tab3" onClick="JavaScript:selectTab(3);">
+
+                                    <span class="filter-text"> charity</span>
+                                </li>
+                                <li id="tab3" onClick="JavaScript:selectTab(3);">
+
+                                    <span class="filter-text">church</span>
+                                </li>
+                                <li id="tab3" onClick="JavaScript:selectTab(3);">
+
+                                    <span class="filter-text">Cleaning</span>
+                                </li>
+                                <li id="tab3" onClick="JavaScript:selectTab(3);">
+
+                                    <span class="filter-text">Consulting</span>
+                                </li>
+                                <li id="tab3" onClick="JavaScript:selectTab(3);">
+
+                                    <span class="filter-text">cooking</span>
+                                </li>
+                                <li id="tab3" onClick="JavaScript:selectTab(3);">
+
+                                    <span class="filter-text">doctor</span>
+                                </li>
+                                <li id="tab3" onClick="JavaScript:selectTab(3);">
+
+                                    <span class="filter-text">heating-air-conditioning</span>
+                                </li>
+                                <li id="tab3" onClick="JavaScript:selectTab(3);">
+
+                                    <span class="filter-text">insurance</span>
+                                </li>
+                                <li id="tab3" onClick="JavaScript:selectTab(3);">
+
+                                    <span class="filter-text">real Estate</span>
+                                </li>
+
+
+                            </ul>
+
+                        </div>
+                        <div class="filter-contents">
+                            <!-- filter conten -->
+                            <div class="filtertabcontent">
+
+                                <div class="row portfolio-tab-container" style="margin: 0;">
+                                    <div class=" porfolio-items-container border-box-effect" style="max-width: 30%;">
+                                        <a class="ss-portfolio__item" data-fancybox="portfolio" data-type="iframe"
+                                            href="asset/videoAnimation/accubuild-whiteboard.mp4">
+                                            <figure class="ss-portfolio__item--image" style="margin: 0;">
+                                                <img loading="lazy"
+                                                    src="asset/videoAnimation/apollosmartlights-motion-graphics.png"
+                                                    data-src="asset/videoAnimation/accubuild-whiteboard.png"
+                                                    alt="Fracht App" data-was-processed="true">
+                                            </figure>
+                                        </a>
+                                    </div>
+                                    <div class=" porfolio-items-container border-box-effect" style="max-width: 30%;">
+                                        <a class="ss-portfolio__item" data-fancybox="portfolio" data-type="iframe"
+                                            href="asset/videoAnimation/accubuild-whiteboard.mp4">
+                                            <figure class="ss-portfolio__item--image" style="margin: 0;">
+                                                <img loading="lazy"
+                                                    src="asset/videoAnimation/apollosmartlights-motion-graphics.png"
+                                                    data-src="asset/videoAnimation/accubuild-whiteboard.png"
+                                                    alt="Fracht App" data-was-processed="true">
+                                            </figure>
+                                        </a>
+                                    </div>
+                                    <div class=" porfolio-items-container border-box-effect" style="max-width: 30%;">
+                                        <a class="ss-portfolio__item" data-fancybox="portfolio" data-type="iframe"
+                                            href="asset/videoAnimation/accubuild-whiteboard.mp4">
+                                            <figure class="ss-portfolio__item--image" style="margin: 0;">
+                                                <img loading="lazy"
+                                                    src="asset/videoAnimation/apollosmartlights-motion-graphics.png"
+                                                    data-src="asset/videoAnimation/accubuild-whiteboard.png"
+                                                    alt="Fracht App" data-was-processed="true">
+                                            </figure>
+                                        </a>
+                                    </div>
+                                    <div class=" porfolio-items-container border-box-effect" style="max-width: 30%;">
+                                        <a class="ss-portfolio__item" data-fancybox="portfolio" data-type="iframe"
+                                            href="asset/videoAnimation/accubuild-whiteboard.mp4">
+                                            <figure class="ss-portfolio__item--image" style="margin: 0;">
+                                                <img loading="lazy"
+                                                    src="asset/videoAnimation/apollosmartlights-motion-graphics.png"
+                                                    data-src="asset/videoAnimation/accubuild-whiteboard.png"
+                                                    alt="Fracht App" data-was-processed="true">
+                                            </figure>
+                                        </a>
+                                    </div>
+                                    <div class=" porfolio-items-container border-box-effect" style="max-width: 30%;">
+                                        <a class="ss-portfolio__item" data-fancybox="portfolio" data-type="iframe"
+                                            href="asset/videoAnimation/accubuild-whiteboard.mp4">
+                                            <figure class="ss-portfolio__item--image" style="margin: 0;">
+                                                <img loading="lazy"
+                                                    src="asset/videoAnimation/apollosmartlights-motion-graphics.png"
+                                                    data-src="asset/videoAnimation/accubuild-whiteboard.png"
+                                                    alt="Fracht App" data-was-processed="true">
+                                            </figure>
+                                        </a>
+                                    </div>
+                                    <div class=" porfolio-items-container border-box-effect" style="max-width: 30%;">
+                                        <a class="ss-portfolio__item" data-fancybox="portfolio" data-type="iframe"
+                                            href="asset/videoAnimation/accubuild-whiteboard.mp4">
+                                            <figure class="ss-portfolio__item--image" style="margin: 0;">
+                                                <img loading="lazy"
+                                                    src="asset/videoAnimation/apollosmartlights-motion-graphics.png"
+                                                    data-src="asset/videoAnimation/accubuild-whiteboard.png"
+                                                    alt="Fracht App" data-was-processed="true">
+                                            </figure>
+                                        </a>
+                                    </div>
+                                    
+                                
+                                </div>
+                            </div>
+                            <div class="filtertabcontent" style="display: none;">
+
+                            </div>
+                            <div class="filtertabcontent" style="display: none;">
+
+                            </div>
+                            <div class="filtertabcontent" style="display: none;">
+
+                            </div>
+                            <div class="filtertabcontent" style="display: none;">
+
+                            </div>
+                            <div class="filtertabcontent" style="display: none;">
+
+                            </div>
+                            <div class="filtertabcontent" style="display: none;">
+
+                            </div>
+                            <div class="filtertabcontent" style="display: none;">
+
+                            </div>
+                            <div class="filtertabcontent" style="display: none;">
+
+                            </div>
+                            <div class="filtertabcontent" style="display: none;">
+
+                            </div>
+                            <div class="filtertabcontent" style="display: none;">
+
+                            </div>
+                            <div class="filtertabcontent" style="display: none;">
+
+                            </div>
+                            <div class="filtertabcontent" style="display: none;">
+
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="tabcontent" style="display: none;">
+
+                <div class="row" style="align-items: normal;">
+                    <div class="tab-description" style="text-align: left;">
+
+
+                    </div>
+                    <div class=" tab-description">
+
+                    </div>
+                </div>
+            </div>
+            <div class="tabcontent" style="display: none;">
+
+                <div class="row" style="align-items: normal;">
+                    <div class="tab-description tab2" style="text-align: left;">
+
+
+                    </div>
+
+                    <div class="tab-description">
+
+                    </div>
+                </div>
+            </div>
+            <div class="tabcontent" style="display: none;">
+
+                <div class="row" style="align-items: normal;">
+                    <div class="tab-description tab2" style="text-align: left;">
+
+
+                    </div>
+
+                    <div class="tab-description">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>  var tabs = document.querySelectorAll(".tabs ul li"); //.filter-tabs ul li
+        var tab_content = document.querySelectorAll(".tabcontent");
+
+var filter_tabs =document.querySelectorAll(".filter-tabs ul li");
+var filter_content = document.querySelectorAll(".filtertabcontent");
+        tabs.forEach(function (tab, tab_index) {
+            tab.addEventListener("click", function () {
+                tabs.forEach(function (tab) {
+                    tab.classList.remove("active");
+                })
+                tab.classList.add("active");
+
+                tab_content.forEach(function (content, content_index) {
+                    if (content_index == tab_index) {
+                        content.style.display = "block";
+                    }
+                    else {
+                        content.style.display = "none";
+                    }
+                })
+
+            })
+        });
+    //   =============================
+
+
+    filter_tabs.forEach(function (filter_tab, tab_index) {
+       
+        filter_tab.addEventListener("click", function () {
+                console.log("pressed");
+                filter_tabs.forEach(function (filter_tab) {
+                    filter_tab.classList.remove("current");
+                })
+                filter_tab.classList.add("current");
+
+                filter_content.forEach(function (content, content_index) {
+                    if (content_index == tab_index) {
+                        content.style.display = "block";
+                    }
+                    else {
+                        content.style.display = "none";
+                    }
+                })
+
+            })
+        });
+
+        
+            
+      
+    //   --------------------
+
+        $(document).ready(function () {
+    $("[data-fancybox='gallery']").fancybox({
+      // Options if needed
+      autoSize: false,
+      width: 900, // Set the width of the iframe
+                height: 600, // Set the height of the iframe
+                maxWidth: "90%", // Set the maximum width of the iframe
+                maxHeight: "90%",
+    });
+  });
+  $(document).ready(function () {
+            $("[data-fancybox='portfolio']").fancybox({
+                type: "iframe", // Set the type to "iframe" for videos
+                iframe: {
+                    preload: false, // Set to true if you want to preload the iframe
+                },
+                width: 900, // Set the width of the iframe
+                height: 600, // Set the height of the iframe
+                maxWidth: "90%", // Set the maximum width of the iframe
+                maxHeight: "90%", // Set the maximum height of the iframe
+                // autoSize: false, // Set to false to disable auto-sizing
+                helpers: {
+                    buttons: {
+                        position: "top", // Set the position of buttons (you can change to "inside" or "outside")
+                    },
+                },
+            });
+        });
+        </script>
+</body>
+
+</html>
